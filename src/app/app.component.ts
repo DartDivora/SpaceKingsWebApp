@@ -6,20 +6,33 @@ import { stringify } from '@angular/core/src/util';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello, I am alive!</h1>`,
+  template: `<h1>Hello, I am alive! </h1>
+  <button (click)="drawCard()">click me</button>
+  <div *ngIf="deck"> hey
+    <div *ngFor=" let card of deck.cards" class="mdl-cell mdl-cell--4-col">
+      {{card.value}},{{card.suit}}
+    </div>
+  </div>`,
   providers: [CardsService]
 })
 export class AppComponent {
-  public deck: Deck = new Deck();
-  public _cardService: CardsService;
+  private deck: Deck;
 
-  constructor(_cardService: CardsService) {
-    this._cardService = _cardService
+  constructor(private _cardService: CardsService) {
+  }
+
+  drawCard(): void{
+    this.deck.drawCard()
+  }
+
+  getRemainingCards(): void {
+    console.log(this.deck.getRemainingCards())
   }
 
   ngOnInit(): void {
     this._cardService.getCards().subscribe(
-      cards => this.deck.cards = cards
+      cards =>
+        this.deck = new Deck(cards)
     );
   }
 }
