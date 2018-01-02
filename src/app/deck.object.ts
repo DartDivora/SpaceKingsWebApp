@@ -4,15 +4,17 @@ export class Deck {
     cards: Card[];
 
     constructor(newCards: Card[]){
-      this.cards = newCards
+      this.cards = newCards;
     }
 
     public getRemainingCards(): number{
-      return this.cards.length
+      return this.cards.length;
     }
 
     public drawCard(): void{
-      //card = this.cards[Math.floor(Math.random()*this.cards.length)];
-      //console.log(card.value + " of " + card.suit);
+      var cardNumber = Math.floor(Math.random()*this.cards.length)
+      var card = this.cards[cardNumber];
+      console.log(card.value + " of " + card.suit);
+      delete this.cards[cardNumber];
     }
 }

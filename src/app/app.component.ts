@@ -7,8 +7,8 @@ import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'my-app',
   template: `<h1>Hello, I am alive! </h1>
-  <button (click)="drawCard()">click me</button>
-  <div *ngIf="deck"> hey
+  <div *ngIf="deck">
+  <button (click)="drawCard()">click me (cards left:{{deck.getRemainingCards()}})</button>
     <div *ngFor=" let card of deck.cards" class="mdl-cell mdl-cell--4-col">
       {{card.value}},{{card.suit}}
     </div>
@@ -17,16 +17,13 @@ import { stringify } from '@angular/core/src/util';
 })
 export class AppComponent {
   private deck: Deck;
+  private number: cardsLeft = 0;
 
   constructor(private _cardService: CardsService) {
   }
 
   drawCard(): void{
     this.deck.drawCard()
-  }
-
-  getRemainingCards(): void {
-    console.log(this.deck.getRemainingCards())
   }
 
   ngOnInit(): void {
