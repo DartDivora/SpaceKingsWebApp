@@ -1,8 +1,8 @@
 export class Card {
-    value: string;
-    suit: string;
-    image: string;
-    name: string;
+    public value: string;
+    public suit: string;
+    public image: string;
+    public name: string;
 
     public setName(): void{
       if(this.suit != "NONE"){
