@@ -8,33 +8,40 @@ import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'my-app',
   template: `<h1>Hello, I am alive! </h1>
-  <div *ngIf="deck">
+  <div *ngIf="cards">
   <button (click)="drawCard()">click me (cards left:{{this.cardsLeft}})</button>
 
-    <div *ngIf="activeCard"><div *ngIf="activeCardName">
-    You drew {{activeCardName}}
-    </div></div>
+    <div *ngIf="activeCard">
+    You drew the {{activeCard.name}}
+    </div>
   </div>`,
   providers: [CardsService]
 })
 export class AppComponent {
-  private deck: Deck;
-  private cardsLeft: number  = 54;
+  private cards: Card[];
+  private cardsLeft: number = 54;
   private activeCard: Card;
-  private activeCardName: string = "";
 
   constructor(private _cardService: CardsService) {
   }
 
-  drawCard(): void {
-    this.activeCard = this.deck.drawCard();
-    this.cardsLeft--;
+  public drawCard(): Card {
+    var cardNumber = Math.floor(Math.random() * this.cardsLeft);
+    var card = this.cards[cardNumber];
+    if (card) {
+      this.activeCard = this.cards[cardNumber];
+      delete this.cards[cardNumber];
+      this.cardsLeft--;
+    }
   }
+
+
 
   ngOnInit(): void {
     this._cardService.getCards().subscribe(
       cards =>
-        this.deck = new Deck(cards)
+        this.cards = cards
     );
   }
+}
 }
