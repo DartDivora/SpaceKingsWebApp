@@ -9,39 +9,71 @@ import { stringify } from '@angular/core/src/util';
   selector: 'my-app',
   template: `<h1>Hello, I am alive! </h1>
   <div *ngIf="cards">
-  <button (click)="drawCard()">click me (cards left:{{this.cardsLeft}})</button>
-
-    <div *ngIf="activeCard">
-    You drew the {{activeCard.name}}
+  <form name ="drawCards">
+    <div class="form-group">
+      <label for="name">Number of cards to draw</label>
+      <input type="number" class="form-control" name="cardsToDraw" [(ngModel)]="cardsToDraw" required>
     </div>
+    <button type="submit" class="btn btn-success" (click)="drawCard()">Submit</button>
+  </form>
+  <button type="submit" class="btn btn-success" (click)="loadDeck()">Reload Deck</button>
+  <br>
+  Remaining cards: {{this.cards.length}}
+    <div *ngIf="resultString">
+    {{resultString}}
+    </div>
+    <div *ngFor=" let card of drawnCards" class="mdl-cell mdl-cell--4-col">
+          {{card.name}}
+        </div>
   </div>`,
   providers: [CardsService]
 })
 export class AppComponent {
   private cards: Card[];
+  private drawnCards: Card[] = [];
   private cardsLeft: number = 54;
-  private activeCard: Card;
+  private resultString: string;
+  private cardsToDraw: number = 0;
 
   constructor(private _cardService: CardsService) {
   }
 
-  public drawCard(): Card {
-    var cardNumber = Math.floor(Math.random() * this.cardsLeft);
-    var card = this.cards[cardNumber];
-    if (card) {
-      this.activeCard = this.cards[cardNumber];
-      delete this.cards[cardNumber];
-      this.cardsLeft--;
+  public drawCard(): void {
+    this.resultString = "";
+    this.drawnCards = [];
+    if (this.cardsToDraw < 1) {
+      this.resultString = "Cannot draw less than one card, son!";
+      return;
+    }
+    else if (this.cardsToDraw > this.cards.length) {
+      this.resultString = "You only have " + this.cards.length + " cards left!";
+      return;
+    }
+    else {
+      this.resultString = "You drew:";
+    }
+    for (var i = 0; i < this.cardsToDraw; i++) {
+      var cardNumber = Math.floor(Math.random() * this.cardsLeft);
+      var card = this.cards[cardNumber];
+      if (card) {
+        this.drawnCards.push(card);
+        this.cards.splice(cardNumber, 1);
+        this.cardsLeft = this.cards.length;
+      }
     }
   }
 
-
-
-  ngOnInit(): void {
+  public loadDeck(): void {
     this._cardService.getCards().subscribe(
       cards =>
         this.cards = cards
     );
+    this.drawnCards = [];
+    this.resultString = [];
   }
-}
+
+
+  ngOnInit(): void {
+    this.loadDeck();
+  }
 }
