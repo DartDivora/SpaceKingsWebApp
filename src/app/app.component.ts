@@ -7,7 +7,7 @@ import { stringify } from '@angular/core/src/util';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello, I am alive! </h1>
+  template: `<h1>Welcome to the Space Kings Web App!</h1>
   <div *ngIf="cards">
   <form name ="drawCards">
     <div class="form-group">
@@ -34,6 +34,8 @@ export class AppComponent {
   private cardsLeft: number = 54;
   private resultString: string;
   private cardsToDraw: number = 0;
+  private successes: number = 0;
+  private failures: number = 0;
 
   constructor(private _cardService: CardsService) {
   }
@@ -49,9 +51,6 @@ export class AppComponent {
       this.resultString = "You only have " + this.cards.length + " cards left!";
       return;
     }
-    else {
-      this.resultString = "You drew:";
-    }
     for (var i = 0; i < this.cardsToDraw; i++) {
       var cardNumber = Math.floor(Math.random() * this.cardsLeft);
       var card = this.cards[cardNumber];
@@ -59,7 +58,25 @@ export class AppComponent {
         this.drawnCards.push(card);
         this.cards.splice(cardNumber, 1);
         this.cardsLeft = this.cards.length;
+        this.checkCard(card);
+        }
       }
+      this.resultString += "Sucesses: " + this.successes;
+      this.resultString += " Failures: " + this.failures;
+      this.resultString += " You drew:";
+    }
+
+
+  public checkCard(card: Card): void{
+    switch (card.suit) {
+        case 'JACK':
+        case 'QUEEN':
+        case 'KING':
+        case 'ACE':
+            this.successes++;
+            break;
+        case 'JOKER':
+            this.failures++;
     }
   }
 
@@ -69,7 +86,7 @@ export class AppComponent {
         this.cards = cards
     );
     this.drawnCards = [];
-    this.resultString = [];
+    this.resultString = "";
   }
 
 

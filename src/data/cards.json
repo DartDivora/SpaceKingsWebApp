@@ -364,15 +364,15 @@
   },
   {
     "code": "BJ",
-    "value": "BLACK JOKER",
-    "suit": "NONE",
+    "value": "BLACK",
+    "suit": "JOKER",
     "image": "",
     "name": "BLACK JOKER"
   },
   {
     "code": "RJ",
-    "value": "RED JOKER",
-    "suit": "NONE",
+    "value": "RED",
+    "suit": "JOKER",
     "image": "",
     "name": "RED JOKER"
   }
