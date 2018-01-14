@@ -11,6 +11,18 @@ import { stringify } from '@angular/core/src/util';
   <div *ngIf="cards">
   <form name ="drawCards">
     <div class="form-group">
+      <label for="name">Brawn:</label>
+      <input type="number" class="form-control" name="brawn" [(ngModel)]="brawn"><br>
+      <label for="name">Agility:</label>
+      <input type="number" class="form-control" name="agility" [(ngModel)]="agility"><br>
+      <label for="name">Intelligence:</label>
+      <input type="number" class="form-control" name="intelligence" [(ngModel)]="intelligence"><br>
+      <label for="name">Wit:</label>
+      <input type="number" class="form-control" name="wit" [(ngModel)]="wit"><br>
+      <label for="name">Charm:</label>
+      <input type="number" class="form-control" name="charm" [(ngModel)]="charm"><br>
+      <label for="name">Presence:</label>
+      <input type="number" class="form-control" name="presence" [(ngModel)]="presence"><br>
       <label for="name">Number of cards to draw</label>
       <input type="number" class="form-control" name="cardsToDraw" [(ngModel)]="cardsToDraw" required>
     </div>
@@ -77,6 +89,7 @@ export class AppComponent {
             break;
         case 'JOKER':
             this.failures++;
+            break;
     }
   }
 
