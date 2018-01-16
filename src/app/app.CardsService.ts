@@ -19,14 +19,6 @@ export class CardsService {
             //.catch(this.handleError);
     }
 
-    /*
-    getProp(pageID: string): Observable<Card> {
-        return this.getCards()
-            .map((props: Card[]) => props.find(p => p. === pageID))
-            //.do(data => console.log("Property JSON: " +  JSON.stringify(data)));
-    }
-    */
-
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
