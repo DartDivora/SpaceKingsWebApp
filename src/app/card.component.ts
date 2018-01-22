@@ -10,7 +10,12 @@ import { stringify } from '@angular/core/src/util';
   <div *ngIf="cards">
   <form name ="drawCards">
     <div class="form-group">
-      <label for="name">Brawn:</label>
+      <label for="name">Character Name:</label>
+      <input type="text" class="form-control" name="Character Name" [(ngModel)]="characterName"><br>
+      <label for="name">Player Name:</label>
+      <input type="text" class="form-control" name="Player Name" [(ngModel)]="playerName"><br>
+      <label for="name">Concept:</label>
+      <input type="text" class="form-control" name="Concept" [(ngModel)]="concept"><br>
       <input type="number" class="form-control" name="brawn" [(ngModel)]="brawn"><br>
       <label for="name">Agility:</label>
       <input type="number" class="form-control" name="agility" [(ngModel)]="agility"><br>
@@ -47,12 +52,15 @@ export class CardComponent {
   private cardsToDraw: number = 0;
   private successes: number = 0;
   private failures: number = 0;
+  private characterName: string = "Something";
 
   constructor(private _cardService: CardsService) {
   }
 
   public drawCard(): void {
     this.resultString = "";
+    this.successes = 0;
+    this.failures = 0;
     this.drawnCards = [];
     if (this.cardsToDraw < 1) {
       this.resultString = "Cannot draw less than one card, son!";
@@ -75,19 +83,23 @@ export class CardComponent {
       this.resultString += "Sucesses: " + this.successes;
       this.resultString += " Failures: " + this.failures;
       this.resultString += " You drew:";
+      console.log(this.resultString)
     }
 
 
   public checkCard(card: Card): void{
-    switch (card.suit) {
+    console.log(card.value);
+    switch (card.value) {
         case 'JACK':
         case 'QUEEN':
         case 'KING':
         case 'ACE':
             this.successes++;
+            console.log("Increasing Successes by 1!");
             break;
         case 'JOKER':
             this.failures++;
+            console.log("Increasing Failures by 1!");
             break;
     }
   }
