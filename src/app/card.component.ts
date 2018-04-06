@@ -10,23 +10,6 @@ import { stringify } from '@angular/core/src/util';
   <div *ngIf="cards">
   <form name ="drawCards">
     <div class="form-group">
-      <label for="name">Character Name:</label>
-      <input type="text" class="form-control" name="Character Name" [(ngModel)]="characterName"><br>
-      <label for="name">Player Name:</label>
-      <input type="text" class="form-control" name="Player Name" [(ngModel)]="playerName"><br>
-      <label for="name">Concept:</label>
-      <input type="text" class="form-control" name="Concept" [(ngModel)]="concept"><br>
-      <input type="number" class="form-control" name="brawn" [(ngModel)]="brawn"><br>
-      <label for="name">Agility:</label>
-      <input type="number" class="form-control" name="agility" [(ngModel)]="agility"><br>
-      <label for="name">Intelligence:</label>
-      <input type="number" class="form-control" name="intelligence" [(ngModel)]="intelligence"><br>
-      <label for="name">Wit:</label>
-      <input type="number" class="form-control" name="wit" [(ngModel)]="wit"><br>
-      <label for="name">Charm:</label>
-      <input type="number" class="form-control" name="charm" [(ngModel)]="charm"><br>
-      <label for="name">Presence:</label>
-      <input type="number" class="form-control" name="presence" [(ngModel)]="presence"><br>
       <label for="name">Number of cards to draw</label>
       <input type="number" class="form-control" name="cardsToDraw" [(ngModel)]="cardsToDraw" required>
     </div>

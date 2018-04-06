@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
             <a class='navbar-brand' href="#">Space Kings Web App</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" routerLink="/welcome">Welcome</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/card">Card</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/char">Character Sheet</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/card">Draw Cards</a></li>
             </ul>
         </div>
     </nav>
