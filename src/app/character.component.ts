@@ -14,27 +14,27 @@ import { Component } from '@angular/core';
       <div class="form-row">
         <div class="form-group col-md-2">
             <label for="name">Brawn:</label>
-            <input type="number" class="form-control" name="brawn" [(ngModel)]="brawn">
+            <input type="number" min="1" max="4" class="form-control" name="brawn" [(ngModel)]="brawn">
         </div>
         <div class="form-group col-md-2">
             <label for="name">Agility:</label>
-            <input type="number" class="form-control" name="agility" [(ngModel)]="agility">
+            <input type="number" min="1" max="4" class="form-control" name="agility" [(ngModel)]="agility">
         </div>
         <div class="form-group col-md-2">
             <label for="name">Intelligence:</label>
-            <input type="number" class="form-control" name="intelligence" [(ngModel)]="intelligence">
+            <input type="number" min="1" max="4" class="form-control" name="intelligence" [(ngModel)]="intelligence">
         </div>
         <div class="form-group col-md-2">
             <label for="name">Wit:</label>
-            <input type="number" class="form-control" name="wit" [(ngModel)]="wit">
+            <input type="number" min="1" max="4" class="form-control" name="wit" [(ngModel)]="wit">
         </div>
         <div class="form-group col-md-2">
             <label for="name">Charm:</label> 
-            <input type="number" class="form-control" name="charm" [(ngModel)]="charm">
+            <input type="number" min="1" max="4" class="form-control" name="charm" [(ngModel)]="charm">
         </div>
         <div class="form-group col-md-2">
             <label for="name">Presence:</label>
-            <input type="number" class="form-control" name="presence" [(ngModel)]="presence">
+            <input type="number" min="1" max="4" class="form-control" name="presence" [(ngModel)]="presence">
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@ export class CharacterSheetComponent {
 
     public saveSheet(): void {
         console.log("This will eventually do something!");
+        
       }
 
 }
