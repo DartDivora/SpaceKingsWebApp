@@ -5,6 +5,7 @@ import { CharacterSheet } from './charactersheet.object';
   template: `
   <div>
   <form name ="characterSheet" (ngSubmit)="saveSheet()" ngNativeValidate>
+    <b>Basic Information:</b><br><br>
     <div class="form-group">
       <label for="name">Character Name:</label>
       <input type="text" class="form-control" name="Character Name" [(ngModel)]="stats.characterName" required><br>
@@ -12,6 +13,12 @@ import { CharacterSheet } from './charactersheet.object';
       <input type="text" class="form-control" name="Player Name" [(ngModel)]="stats.playerName" required><br>
       <label for="name">Concept:</label>
       <input type="text" class="form-control" name="Concept" [(ngModel)]="stats.concept" required><br>
+      <label for="name">Race:</label>
+      <input type="text" class="form-control" name="Race" [(ngModel)]="stats.race" required><br>    
+      <label for="name">Planet:</label>
+      <input type="text" class="form-control" name="Planet" [(ngModel)]="stats.planet" required><br>    
+      
+      <b>Attributes (score of one to four, seven points to spend):</b><br><br>
       <div class="form-row">
         <div class="form-group col-md-2">
             <label for="name">Brawn:</label>
