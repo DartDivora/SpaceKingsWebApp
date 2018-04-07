@@ -1,51 +1,55 @@
 import { Component } from '@angular/core';
+import { CharacterSheet } from './charactersheet.object';
 
 @Component({
   template: `
   <div>
-  <form name ="characterSheet">
+  <form name ="characterSheet" (ngSubmit)="saveSheet()" ngNativeValidate>
     <div class="form-group">
       <label for="name">Character Name:</label>
-      <input type="text" class="form-control" name="Character Name" [(ngModel)]="characterName"><br>
+      <input type="text" class="form-control" name="Character Name" [(ngModel)]="stats.characterName" required><br>
       <label for="name">Player Name:</label>
-      <input type="text" class="form-control" name="Player Name" [(ngModel)]="playerName"><br>
+      <input type="text" class="form-control" name="Player Name" [(ngModel)]="stats.playerName" required><br>
       <label for="name">Concept:</label>
-      <input type="text" class="form-control" name="Concept" [(ngModel)]="concept"><br>
+      <input type="text" class="form-control" name="Concept" [(ngModel)]="stats.concept" required><br>
       <div class="form-row">
         <div class="form-group col-md-2">
             <label for="name">Brawn:</label>
-            <input type="number" min="1" max="4" class="form-control" name="brawn" [(ngModel)]="brawn">
+            <input type="number" min="1" max="4" class="form-control" name="brawn" [(ngModel)]="stats.brawn" required>
         </div>
         <div class="form-group col-md-2">
             <label for="name">Agility:</label>
-            <input type="number" min="1" max="4" class="form-control" name="agility" [(ngModel)]="agility">
+            <input type="number" min="1" max="4" class="form-control" name="agility" [(ngModel)]="stats.agility" required>
         </div>
         <div class="form-group col-md-2">
             <label for="name">Intelligence:</label>
-            <input type="number" min="1" max="4" class="form-control" name="intelligence" [(ngModel)]="intelligence">
+            <input type="number" min="1" max="4" class="form-control" name="intelligence" [(ngModel)]="stats.intelligence" required>
         </div>
         <div class="form-group col-md-2">
             <label for="name">Wit:</label>
-            <input type="number" min="1" max="4" class="form-control" name="wit" [(ngModel)]="wit">
+            <input type="number" min="1" max="4" class="form-control" name="wit" [(ngModel)]="stats.wit" required>
         </div>
         <div class="form-group col-md-2">
             <label for="name">Charm:</label> 
-            <input type="number" min="1" max="4" class="form-control" name="charm" [(ngModel)]="charm">
+            <input type="number" min="1" max="4" class="form-control" name="charm" [(ngModel)]="stats.charm" required>
         </div>
         <div class="form-group col-md-2">
             <label for="name">Presence:</label>
-            <input type="number" min="1" max="4" class="form-control" name="presence" [(ngModel)]="presence">
+            <input type="number" min="1" max="4" class="form-control" name="presence" [(ngModel)]="stats.presence" required>
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-success" (click)="saveSheet()">Save character sheet</button>
+    <button type="submit" class="btn btn-success">Save character sheet</button>
   </form>
   </div>`
 })
 export class CharacterSheetComponent {
 
+    stats = new CharacterSheet();
+
     public saveSheet(): void {
-        console.log("This will eventually do something!");
+        
+        console.log(JSON.stringify(this.stats));
         
       }
 
