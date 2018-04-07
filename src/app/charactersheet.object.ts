@@ -3,7 +3,7 @@ export class CharacterSheet {
     public playerName: string;
     public concept: string;
     public race: string;
-    public planet: string;        
+    public planet: string;
     public brawn: string;
     public agility: string;
     public intelligence: string;

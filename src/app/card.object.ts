@@ -3,6 +3,4 @@ export class Card {
     public suit: string;
     public image: string;
     public name: string;
-
-
 }

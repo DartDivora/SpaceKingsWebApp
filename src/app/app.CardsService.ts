@@ -15,8 +15,8 @@ export class CardsService {
     public getCards(): Observable<Card[]> {
         return this._http.get(this._cardsURL)
             .map((response: Response) => <Card[]>response.json())
-            //.do(data => console.log("All: " +  JSON.stringify(data)))
-            //.catch(this.handleError);
+        //.do(data => console.log("All: " +  JSON.stringify(data)))
+        //.catch(this.handleError);
     }
 
     private handleError(error: Response) {

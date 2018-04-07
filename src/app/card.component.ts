@@ -61,29 +61,29 @@ export class CardComponent {
         this.cards.splice(cardNumber, 1);
         this.cardsLeft = this.cards.length;
         this.checkCard(card);
-        }
       }
-      this.resultString += "Sucesses: " + this.successes;
-      this.resultString += " Failures: " + this.failures;
-      this.resultString += " You drew:";
-      console.log(this.resultString)
     }
+    this.resultString += "Sucesses: " + this.successes;
+    this.resultString += " Failures: " + this.failures;
+    this.resultString += " You drew:";
+    console.log(this.resultString)
+  }
 
 
-  public checkCard(card: Card): void{
+  public checkCard(card: Card): void {
     console.log(card.value);
     switch (card.value) {
-        case 'JACK':
-        case 'QUEEN':
-        case 'KING':
-        case 'ACE':
-            this.successes++;
-            console.log("Increasing Successes by 1!");
-            break;
-        case 'JOKER':
-            this.failures++;
-            console.log("Increasing Failures by 1!");
-            break;
+      case 'JACK':
+      case 'QUEEN':
+      case 'KING':
+      case 'ACE':
+        this.successes++;
+        console.log("Increasing Successes by 1!");
+        break;
+      case 'JOKER':
+        this.failures++;
+        console.log("Increasing Failures by 1!");
+        break;
     }
   }
 

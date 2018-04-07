@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CharacterSheet } from './charactersheet.object';
 
 @Component({
-  template: `
+    template: `
   <div>
   <form name ="characterSheet" (ngSubmit)="saveSheet()" ngNativeValidate>
     <b>Basic Information:</b><br><br>
@@ -55,9 +55,9 @@ export class CharacterSheetComponent {
     stats = new CharacterSheet();
 
     public saveSheet(): void {
-        
+
         console.log(JSON.stringify(this.stats));
-        
-      }
+
+    }
 
 }
